@@ -38,10 +38,26 @@ function timeWriter() {
 
     let containerSeconds = document.getElementById("hourSeconds");
     containerSeconds.textContent = result.seconds;
+
+    addProgressBar(result.days);
 }
 
+function addProgressBar(days) {
+    let placeProgressBar = document.getElementById("time-progress");
+
+    let progressBar = placeProgressBar.querySelector("progress");
+
+    if (!progressBar) {
+        progressBar = document.createElement("progress");
+        progressBar.setAttribute("value", days);
+        progressBar.setAttribute("max", "740");
+        placeProgressBar.appendChild(progressBar);
+    }
+    progressBar.setAttribute("max", "740");
+    progressBar.setAttribute("value", days);
+}
+
+//Update the page every second
 setInterval(timeWriter, 1000);
 
 timeWriter();
-
-//https://codepen.io/nitnelav/pen/povrOME
