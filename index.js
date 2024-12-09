@@ -1,3 +1,8 @@
+const importantDay = new Date("June 19, 2023 11:50:00");
+const daysSecondYear =
+    (new Date("June 19, 2025 11:50:00") - new Date("June 19, 2023 11:50:00")) /
+    (1000 * 60 * 60 * 24);
+
 //calculate the number of days
 function timeCounter(currentDate, importantDay) {
     let totalTime = currentDate - importantDay;
@@ -21,7 +26,7 @@ function timeCounter(currentDate, importantDay) {
 function timeWriter() {
     //Days to calculate
     const currentDate = new Date();
-    const importantDay = new Date("June 19, 2023 11:50:00");
+    //const importantDay = new Date("June 19, 2023 11:50:00");
 
     // call the funtion to calculate the time and pass the two days
     const result = timeCounter(currentDate, importantDay);
@@ -44,16 +49,17 @@ function timeWriter() {
 
 function addProgressBar(days) {
     let placeProgressBar = document.getElementById("time-progress");
-
+    //check if the progress bar already exists
     let progressBar = placeProgressBar.querySelector("progress");
-
     if (!progressBar) {
         progressBar = document.createElement("progress");
         progressBar.setAttribute("value", days);
-        progressBar.setAttribute("max", "740");
+        progressBar.setAttribute("max", daysSecondYear);
         placeProgressBar.appendChild(progressBar);
     }
-    progressBar.setAttribute("max", "740");
+
+    //update the progress bar
+    progressBar.setAttribute("max", daysSecondYear);
     progressBar.setAttribute("value", days);
 }
 
