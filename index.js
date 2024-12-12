@@ -67,3 +67,28 @@ function addProgressBar(days) {
 setInterval(timeWriter, 1000);
 
 timeWriter();
+
+const container = document.getElementById("snowflakes-container");
+
+// Function to create a snowflake
+function createSnowflake() {
+    const snowflake = document.createElement("div");
+    snowflake.classList.add("snowflake");
+    snowflake.innerHTML = "❆";
+
+    // Randomize starting position and animation properties
+    const startPosition = Math.random() * window.innerWidth;
+    const animationDuration = Math.random() * 8 + 3; // Between 3 and 8 seconds
+    const snowflakeSize = Math.random() * 25 + 5; // Between 10px and 25px
+
+    // Apply styles
+    snowflake.style.left = `${startPosition}px`;
+    snowflake.style.fontSize = `${snowflakeSize}px`;
+    snowflake.style.animationDuration = `${animationDuration}s`;
+
+    // Add to container
+    container.appendChild(snowflake);
+}
+
+// Generate snowflakes continuously
+setInterval(createSnowflake, 60); // Create a snowflake every 100ms
